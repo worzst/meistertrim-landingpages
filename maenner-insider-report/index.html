@@ -2091,7 +2091,9 @@
         var PREMIUM_ID = "50296566120794";
 
         function buildShopifyURL(variantId) {
-          return "https://meistertrim.ch/cart/" + variantId + ":1" + window.location.search;
+          var qs = window.location.search;
+          var sep = qs ? "&" : "?";
+          return "https://meistertrim.ch/cart/" + variantId + ":1" + qs + sep + "attributes[lp_source]=maenner-insider-report";
         }
 
         function fireCTAEvent(variantId, price) {
