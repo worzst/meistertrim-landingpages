@@ -11,13 +11,15 @@ Pre-sell advertorial landing pages for **MeisterTrim Der Zähmer 2.0** (Swiss bo
 ## File Structure
 
 ```
-maenner-insider-report/index.html   ← live LP (try.meistertrim.ch/maenner-insider-report)
+maenner-insider-report/
+  index.html                        ← live LP (try.meistertrim.ch/maenner-insider-report)
+  images/kontrolle_nicht_mut.png    ← hero image (section 1)
 _redirects                          ← try.meistertrim.ch/ → meistertrim.ch (302)
 COPY-GUIDELINES.md                  ← tone, belief chain, angle library (read before any copy changes)
 source-documents/                   ← original PDFs from client (Avatar Sheet, Offer Brief, Research Dossier)
 ```
 
-New LP variants go into their own folder: `mkdir <slug> && cp maenner-insider-report/index.html <slug>/index.html`
+New LP variants go into their own folder: `mkdir <slug> && cp -r maenner-insider-report/ <slug>/`
 
 ## Commands
 
@@ -45,6 +47,15 @@ UTM pass-through (fbclid, gclid, ttclid, wbraid, gbraid) is implemented in the J
 **GA4 cross-domain still needs UI config** (one-time, no code required):
 1. GA4 Admin → Data Streams → Web Stream → Configure tag settings → Configure your domains → add `meistertrim.ch` + `try.meistertrim.ch`
 2. Same screen → List unwanted referrals → add `try.meistertrim.ch`
+
+## Shipping Status (important)
+
+Shipping currently from **supplier, not Swiss warehouse** — longer transit times, not yet disclosed on LP. All Swiss shipping claims are commented out until CH stock is available:
+- Trust badges "Schnelle Lieferung" + "CH-Lager" → commented out
+- "Lieferung in 2–5 Werktagen · Versand aus der Schweiz" in price block → commented out
+- FAQ "Wie lange dauert die Lieferung in die Schweiz?" → commented out
+
+When CH fulfillment is live: uncomment these blocks and update the FAQ with accurate transit times.
 
 ## Legal Decisions (resolved)
 
@@ -76,7 +87,7 @@ Schuld-Entlastung → LED-Mechanism → IPX7 → Grip/3-Säulen → Kontrolle > 
 
 ## Brand Reference
 
-**Product:** Der Zähmer 2.0 — IPX7 waterproof, LED light, Anti-Rutsch-Grip, HautSchutzPro™ blade, 90 min battery. Standard includes guard attachments (3/4.5/6 mm). Premium adds Dual-Foil blade for smoother finish.
+**Product:** Der Zähmer 2.0 — IPX7 waterproof, LED light, Anti-Rutsch-Grip, HautSchutzPro™ blade, 90 min battery. Standard includes guard attachments (3/4.5/6 mm). Premium adds Dual-Foil blade for smoother finish. Payment: TWINT, Klarna, Kreditkarte. Social proof: 5'000+ Kunden DACH.
 
 **Mechanism (Big Idea):** Schnitte entstehen durch fehlende Kontrolle (schlechte Sicht + rutschiger Griff), nicht durch Ungeschicklichkeit. Lösung: LED + IPX7 + Grip = Kontroll-Stack.
 
