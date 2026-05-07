@@ -10,6 +10,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '532114799530840');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=532114799530840&ev=PageView&noscript=1"/></noscript>
+
+<!-- GA4 — TODO: G-ZL6JB3MB4C durch echte Measurement ID ersetzen, dann try.meistertrim.ch als Cross-Domain in GA4 Admin hinzufügen -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZL6JB3MB4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZL6JB3MB4C', {
+    linker: { domains: ['meistertrim.ch', 'try.meistertrim.ch'] }
+  });
+</script>
+
+<!-- Triple Whale Pixel -->
+<script>
+!function(w){
+  var tw=w.TriplePixel=w.TriplePixel||{};
+  if(tw.loaded)return;tw.loaded=true;tw.store='f04d56-3c.myshopify.com';
+  var s=document.createElement('script');s.type='text/javascript';s.async=true;
+  s.src='https://conversions-config.triplewhale.com/pixel/f04d56-3c.js';
+  var e=document.getElementsByTagName('script')[0];e.parentNode.insertBefore(s,e);
+}(window);
+</script>
+
 <style>
   :root{
     --bg:#f6f1ea;
@@ -698,6 +736,18 @@
     line-height: 1.5;
   }
 
+  /* ---------- Ad label ---------- */
+  .ad-label{
+    background: #fff;
+    color: #1a1410;
+    padding: 2px 8px;
+    font-size: 10px;
+    border-radius: 3px;
+    margin-right: 12px;
+    letter-spacing: .12em;
+    font-weight: 700;
+  }
+
   /* ---------- Footer ---------- */
   footer.site{
     background: var(--ink);
@@ -782,18 +832,13 @@
 
 <!-- ============ TOP SALE BAR ============ -->
 <div class="sale-bar">
-  <strong>FRÜHLINGS-AKTION</strong> &nbsp;|&nbsp; BIS ZU 40% RABATT + GRATIS VERSAND IN DIE GANZE SCHWEIZ
+  <span class="ad-label">ANZEIGE</span><strong>FRÜHLINGS-AKTION</strong> &nbsp;|&nbsp; BIS ZU 40% RABATT + GRATIS VERSAND IN DIE GANZE SCHWEIZ
 </div>
 
-<!-- ============ COUNTDOWN ============ -->
+<!-- ============ SALE BANNER ============ -->
 <div class="countdown-wrap">
-  <span class="label">Nur heute</span>
   <div class="deal">40% Rabatt + Gratis Versand</div>
-  <div class="countdown" id="cd">
-    <div class="unit"><span class="num" id="cd-h">01</span><span class="lbl">Std.</span></div>
-    <div class="unit"><span class="num" id="cd-m">45</span><span class="lbl">Min.</span></div>
-    <div class="unit"><span class="num" id="cd-s">02</span><span class="lbl">Sek.</span></div>
-  </div>
+  <div style="font-size:13px; opacity:.9; letter-spacing:.12em; text-transform:uppercase;">Nur für kurze Zeit verfügbar</div>
 </div>
 
 <div class="wrap">
@@ -818,18 +863,15 @@
 
       <!-- Byline -->
       <div class="byline">
-        <div class="avatar">MS</div>
+        <div class="avatar">MT</div>
         <div>
-          <div class="name">Marco Schneider <span class="verified">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 2.4L18 1.5l1.5 3.5L23 6l-.9 3.6L24 12l-1.9 2.4L23 18l-3.5 1L18 22.5 14.4 21.6 12 24l-2.4-2.4L6 22.5 4.5 19 1 18l.9-3.6L0 12l1.9-2.4L1 6l3.5-1L6 1.5l3.6.9L12 0z"/><path d="M9.5 16.5l-3.5-3.5 1.5-1.5L9.5 13.5l7-7 1.5 1.5z" fill="#fff"/></svg>
-            Verifiziert
-          </span></div>
-          <div class="role">Schweizer Männerpflege-Redaktor · MeisterTrim Report</div>
+          <div class="name">MeisterTrim Redaktion</div>
+          <div class="role">Schweizer Männerpflege · Stand: Mai 2026</div>
         </div>
       </div>
 
       <p>
-        Ich teste seit über sieben Jahren Trimmer und Bodygroomer für Männer — von Drogerie-Geräten bis hin zu DTC-Premium-Produkten aus den USA. Und ich kann dir sagen: <b>die meisten Männer in der Schweiz machen denselben Fehler</b>.
+        Seit Jahren testen wir Trimmer und Bodygroomer für Männer — von Drogerie-Geräten bis hin zu DTC-Premium-Produkten aus den USA. Und eines ist klar: <b>die meisten Männer in der Schweiz machen denselben Fehler</b>.
       </p>
 
       <p>
@@ -1010,7 +1052,7 @@
           <g>
             <rect x="350" y="0" width="350" height="320" fill="#1a1410"/>
             <text x="525" y="40" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="800" fill="#fff8d4" letter-spacing="2">MIT LED-LICHT</text>
-            <text x="525" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="12" fill="#c8a96a" font-style="italic">100% Kontrolle</text>
+            <text x="525" y="60" text-anchor="middle" font-family="Fraunces, serif" font-size="12" fill="#c8a96a" font-style="italic">Volle Sicht</text>
             <!-- LED Licht -->
             <radialGradient id="ledLight" cx="0.5" cy="0.5" r="0.5">
               <stop offset="0%" stop-color="#fff8d4" stop-opacity="0.6"/>
@@ -1216,7 +1258,7 @@
       <ul class="checklist">
         <li><b>Keramikklinge mit HautSchutzPro™</b> → schneidet sauber, statt zu reissen</li>
         <li><b>Guard-First-Aufsatz</b> (3 mm / 4.5 mm / 6 mm) → die Haut wird gar nicht erst direkt berührt</li>
-        <li><b>Gleiten statt Drücken</b> → keine Mikroverletzungen → keine Pickel</li>
+        <li><b>Gleiten statt Drücken</b> → deutlich weniger Mikroverletzungen → minimiert das Risiko von Pickeln</li>
       </ul>
 
       <p>
@@ -1234,11 +1276,11 @@
       </p>
 
       <p>
-        MeisterTrim ist eine Schweizer Marke. Wir versenden aus der Schweiz, beantworten E-Mails auf Deutsch (und sehr schnell), und unsere Verpackung ist <b>komplett neutral</b> — niemand am Empfang weiss, was drin ist.
+        MeisterTrim ist eine Schweizer Marke. Wir versenden aus der Schweiz und beantworten E-Mails auf Deutsch — und zwar schnell.
       </p>
 
       <div class="trust">
-        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18l-2 13H5L3 6zm5 0V4a4 4 0 018 0v2"/></svg> Diskreter Versand</span>
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18l-2 13H5L3 6zm5 0V4a4 4 0 018 0v2"/></svg> Schnelle Lieferung</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg> CH-Lager</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 8H3v8h18V8zM5 12h14"/></svg> TWINT &amp; Karte</span>
         <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg> Kein Abo</span>
@@ -1252,10 +1294,6 @@
 
       <p>
         Hier ist der ehrlichste Teil: <b>Du musst uns nicht glauben.</b> Du bestellst, testest 30 Tage, und wenn der Zähmer 2.0 nicht hält was er verspricht — bekommst du dein Geld zurück. Komplett. Ohne mühsame Retouren-Bürokratie.
-      </p>
-
-      <p>
-        Plus: <b>2 Jahre Garantie</b> auf das Gerät selbst. Wenn der Akku in dieser Zeit schwächelt, der Motor versagt oder irgendwas an der Verarbeitung nicht stimmt — <b>kostenloser Ersatz</b>.
       </p>
 
       <p>
@@ -1273,14 +1311,14 @@
       <p style="color:var(--muted); font-size:14px; margin: 0 0 6px;">Lieferung in 2–5 Werktagen · Versand aus der Schweiz</p>
 
       <div class="price-grid">
-        <div class="pkg" onclick="window.location.href='#checkout'">
+        <div class="pkg" id="pkg-standard">
           <div class="name">Standard</div>
           <div class="desc">Sicher trimmen unter der Dusche</div>
           <div class="old">CHF 99.95</div>
           <div class="now">CHF 59.95</div>
           <div class="save">Du sparst CHF 40</div>
         </div>
-        <div class="pkg best" onclick="window.location.href='#checkout'">
+        <div class="pkg best" id="pkg-premium">
           <div class="name">Premium</div>
           <div class="desc">+ Dual-Foil Klinge für glatten Finish</div>
           <div class="old">CHF 119.95</div>
@@ -1289,7 +1327,7 @@
         </div>
       </div>
 
-      <a href="#checkout" id="checkout" class="btn btn-arrow">Jetzt risikofrei testen</a>
+      <a href="https://meistertrim.ch/cart/50296566088026:1" id="checkout-btn" class="btn btn-arrow">Jetzt risikofrei testen</a>
 
       <div class="risk-row">
         Verkaufsrisiko: <b>Hoch</b> &nbsp;|&nbsp; <b>Gratis</b> Versand &nbsp;|&nbsp; TWINT verfügbar
@@ -1307,10 +1345,11 @@
       </svg>
       <h3>30 Tage sorgenfrei testen — deine Zufriedenheit zählt</h3>
       <p>Du testest. Du entscheidest. Wir sind nur dann glücklich, wenn du es bist.</p>
-      <p>Falls der Zähmer 2.0 nicht deinen Erwartungen entspricht, bekommst du dein Geld zurück. Ohne Wenn und Aber. <b>Plus 2 Jahre Garantie auf die Qualität.</b></p>
+      <p>Falls der Zähmer 2.0 nicht deinen Erwartungen entspricht, bekommst du dein Geld zurück. Ohne Wenn und Aber.</p>
     </section>
 
     <!-- ============ REVIEWS ============ -->
+    <!-- TODO: Platzhalter-Reviews durch echte Kundenstimmen ersetzen (Kunden-OK für Namensnennung + Kaufbeleg für VERIFIZIERT-Badge nötig) -->
     <section class="reviews">
       <h2 style="font-family:'Fraunces',serif; text-align:center; font-size:26px; margin-bottom:18px;">Was Kunden sagen</h2>
 
@@ -1360,7 +1399,7 @@
 
       <details>
         <summary>Wie lange dauert die Lieferung in die Schweiz?</summary>
-        <p>Wir versenden direkt aus der Schweiz. Bestellungen vor 14:00 Uhr werden in der Regel <b>am selben Tag verschickt</b>. Lieferzeit: 2–5 Werktage in alle Kantone. Versand erfolgt in einer <b>komplett neutralen Verpackung</b> — niemand sieht von aussen, was drin ist.</p>
+        <p>Wir versenden direkt aus der Schweiz. Bestellungen vor 14:00 Uhr werden in der Regel <b>am selben Tag verschickt</b>. Lieferzeit: 2–5 Werktage in alle Kantone.</p>
       </details>
 
       <details>
@@ -1370,7 +1409,7 @@
 
       <details>
         <summary>Was, wenn er mir nicht gefällt?</summary>
-        <p>Du hast <b>30 Tage Zeit</b>, ihn risikofrei zu testen. Wenn er dir nicht passt, kontaktierst du unseren Schweizer Support, schickst ihn zurück und bekommst dein Geld in voller Höhe zurück. <b>Keine Diskussion. Kein Kleingedrucktes.</b> Zusätzlich: <b>2 Jahre Garantie</b> auf das Gerät bei Herstellungsfehlern oder Defekten.</p>
+        <p>Du hast <b>30 Tage Zeit</b>, ihn risikofrei zu testen. Wenn er dir nicht passt, kontaktierst du unseren Schweizer Support, schickst ihn zurück und bekommst dein Geld in voller Höhe zurück. <b>Keine Diskussion. Kein Kleingedrucktes.</b></p>
       </details>
 
       <details>
@@ -1387,8 +1426,8 @@
 
     <!-- ============ FINAL CTA ============ -->
     <div class="cta-block" style="margin: 30px 0 40px;">
-      <a href="#kaufen" class="btn btn-arrow">Jetzt 40% sichern</a>
-      <div class="btn-tiny"><span class="check">✓</span> 30 Tage testen · <span class="check">✓</span> 2 Jahre Garantie · <span class="check">✓</span> Kein Abo</div>
+      <a href="https://meistertrim.ch/cart/50296566088026:1" id="final-cta" class="btn btn-arrow">Jetzt 40% sichern</a>
+      <div class="btn-tiny"><span class="check">✓</span> 30 Tage testen · <span class="check">✓</span> Kein Abo · <span class="check">✓</span> TWINT verfügbar</div>
     </div>
 
   </article>
@@ -1398,11 +1437,11 @@
 <footer class="site">
   <div class="brand-foot">MeisterTrim · Schweiz</div>
   <div class="links">
-    <a href="#">Versand</a>·
-    <a href="#">Rückgabe</a>·
-    <a href="#">Datenschutz</a>·
-    <a href="#">AGB</a>·
-    <a href="#">Kontakt</a>
+    <a href="https://meistertrim.ch/policies/shipping-policy">Versand</a>·
+    <a href="https://meistertrim.ch/policies/refund-policy">Rückgabe</a>·
+    <a href="https://meistertrim.ch/policies/privacy-policy">Datenschutz</a>·
+    <a href="https://meistertrim.ch/policies/terms-of-service">AGB</a>·
+    <a href="https://meistertrim.ch/pages/kontakt">Kontakt</a>
   </div>
   <div>support@meistertrim.ch</div>
   <div class="legal">
@@ -1418,29 +1457,75 @@
       <b>CHF 59.95</b><br>
       <span style="color:var(--muted)">statt CHF 99.95 · 40% Rabatt</span>
     </div>
-    <a href="#kaufen" class="btn">Jetzt sichern</a>
+    <a href="https://meistertrim.ch/cart/50296566088026:1" id="sticky-btn" class="btn">Jetzt sichern</a>
   </div>
 </div>
 
 <script>
-  // Countdown
-  (function(){
-    var end = new Date();
-    end.setHours(end.getHours()+1, end.getMinutes()+45, end.getSeconds()+2);
-    function pad(n){ return n<10 ? "0"+n : ""+n }
-    function tick(){
-      var now = new Date();
-      var diff = Math.max(0, Math.floor((end - now)/1000));
-      var h = Math.floor(diff/3600);
-      var m = Math.floor((diff%3600)/60);
-      var s = diff%60;
-      var hEl=document.getElementById("cd-h"), mEl=document.getElementById("cd-m"), sEl=document.getElementById("cd-s");
-      if(hEl) hEl.textContent = pad(h);
-      if(mEl) mEl.textContent = pad(m);
-      if(sEl) sEl.textContent = pad(s);
+  // Shopify cart URLs with UTM pass-through
+  (function() {
+    var STANDARD_ID = '50296566088026';
+    var PREMIUM_ID  = '50296566120794';
+
+    function buildShopifyURL(variantId) {
+      var params = new URLSearchParams(window.location.search);
+      var out = new URLSearchParams();
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+       'fbclid','gclid','ttclid','wbraid','gbraid'].forEach(function(p) {
+        var v = params.get(p);
+        if (v) out.set(p, v);
+      });
+      var qs = out.toString();
+      return 'https://meistertrim.ch/cart/' + variantId + ':1' + (qs ? '?' + qs : '');
     }
-    tick();
-    setInterval(tick, 1000);
+
+    function fireCTAEvent(variantId, price) {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', {
+          value: price, currency: 'CHF',
+          content_ids: [variantId], content_type: 'product'
+        });
+      }
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'begin_checkout', { currency: 'CHF', value: price });
+      }
+    }
+
+    var checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.href = buildShopifyURL(STANDARD_ID);
+      checkoutBtn.addEventListener('click', function() { fireCTAEvent(STANDARD_ID, 59.95); });
+    }
+
+    var finalBtn = document.getElementById('final-cta');
+    if (finalBtn) {
+      finalBtn.href = buildShopifyURL(STANDARD_ID);
+      finalBtn.addEventListener('click', function() { fireCTAEvent(STANDARD_ID, 59.95); });
+    }
+
+    var stickyBtn = document.getElementById('sticky-btn');
+    if (stickyBtn) {
+      stickyBtn.href = buildShopifyURL(STANDARD_ID);
+      stickyBtn.addEventListener('click', function() { fireCTAEvent(STANDARD_ID, 59.95); });
+    }
+
+    var pkgStandard = document.getElementById('pkg-standard');
+    if (pkgStandard) {
+      pkgStandard.style.cursor = 'pointer';
+      pkgStandard.addEventListener('click', function() {
+        fireCTAEvent(STANDARD_ID, 59.95);
+        window.location.href = buildShopifyURL(STANDARD_ID);
+      });
+    }
+
+    var pkgPremium = document.getElementById('pkg-premium');
+    if (pkgPremium) {
+      pkgPremium.style.cursor = 'pointer';
+      pkgPremium.addEventListener('click', function() {
+        fireCTAEvent(PREMIUM_ID, 69.95);
+        window.location.href = buildShopifyURL(PREMIUM_ID);
+      });
+    }
   })();
 
   // Sticky CTA — erscheint nach 600px Scroll
