@@ -4,71 +4,82 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Pre-sell advertorial landing page for **MeisterTrim Der Zähmer 2.0** (Swiss body/intimate trimmer). The page sits between paid ads and Shopify checkout at `try.meistertrim.ch`. Target market is German-speaking Switzerland (CHF, TWINT). No build system — pure static HTML deployed via Cloudflare Pages.
+Pre-sell advertorial landing pages for **MeisterTrim Der Zähmer 2.0** (Swiss body/intimate trimmer, CHF 59.95 Standard / CHF 69.95 Premium). Pages sit between paid ads and Shopify checkout. Deployed on Cloudflare Pages at `try.meistertrim.ch`. No build system — pure static HTML.
 
-**Current state:** `landingpage-v1.html` is drafted but **not live-ready**. See the blockers in `README.md` and `LEGAL-CHECKLIST.md` before touching anything.
+**Shopify store:** `meistertrim.ch` (existing, do not touch)
+
+## File Structure
+
+```
+maenner-insider-report/index.html   ← live LP (try.meistertrim.ch/maenner-insider-report)
+_redirects                          ← try.meistertrim.ch/ → meistertrim.ch (302)
+COPY-GUIDELINES.md                  ← tone, belief chain, angle library (read before any copy changes)
+source-documents/                   ← original PDFs from client (Avatar Sheet, Offer Brief, Research Dossier)
+```
+
+New LP variants go into their own folder: `mkdir <slug> && cp maenner-insider-report/index.html <slug>/index.html`
 
 ## Commands
 
-No build system. To preview locally:
 ```bash
-open landingpage-v1.html          # open in default browser
-npx serve .                        # serve on localhost
-npx lighthouse http://localhost:PORT --view   # Lighthouse audit
+npx serve .                          # local preview (all paths work)
+open maenner-insider-report/index.html  # quick single-file preview
+npx lighthouse http://localhost:PORT/maenner-insider-report --view
 ```
 
-Deployment is `git push` to `main` → Cloudflare Pages auto-deploys.
+Deployment: `git push origin main` → Cloudflare Pages auto-deploys within ~30s.
 
-## Architecture
+## Integrations (all live)
 
-Single-file HTML (`landingpage-v1.html`) with all CSS inline in `<head>` and JS at bottom of `<body>`. Planned future structure (from `DEPLOYMENT-GUIDE.md`):
+| What | Value |
+|---|---|
+| Meta Pixel | `532114799530840` |
+| GA4 Measurement ID | `G-ZL6JB3MB4C` |
+| Triple Whale store | `f04d56-3c.myshopify.com` |
+| Shopify Standard Variant | `50296566088026` |
+| Shopify Premium Variant | `50296566120794` |
+| Cart URL format | `https://meistertrim.ch/cart/{VARIANT_ID}:1?{utm_params}` |
 
-```
-index.html
-/assets/js/tracking.js       ← Pixel + dataLayer events
-/assets/js/shopify-cart.js   ← Cart permalink + UTM pass-through
-/no-itch/index.html          ← A/B angle variants
-/shower-ready/index.html
-```
+UTM pass-through (fbclid, gclid, ttclid, wbraid, gbraid) is implemented in the JS at the bottom of each LP. CTA IDs: `checkout-btn`, `final-cta`, `sticky-btn`, `pkg-standard`, `pkg-premium`.
 
-**Design tokens:** Deep forest green `#1f3a2e` + terracotta CTA `#c8462c` + sand `#f6f1ea`. Fonts: Fraunces (display/italic headlines) + Inter (body) — editorial magazine look.
+**GA4 cross-domain still needs UI config** (one-time, no code required):
+1. GA4 Admin → Data Streams → Web Stream → Configure tag settings → Configure your domains → add `meistertrim.ch` + `try.meistertrim.ch`
+2. Same screen → List unwanted referrals → add `try.meistertrim.ch`
 
-## Key Integrations (pending client info)
+## Legal Decisions (resolved)
 
-- **Shopify checkout:** `https://meistertrim.ch/cart/{VARIANT_ID}:1?{utm_params}` — needs `STANDARD_VARIANT_ID` and `PREMIUM_VARIANT_ID` from client
-- **Tracking stack:** Meta Pixel (browser) + CAPI via Shopify app + GTM container + Triple Whale Pixel — all IDs pending from client
-- **UTM pass-through:** `fbclid`, `gclid`, `ttclid`, `wbraid`, `gbraid` must be forwarded from LP URL to Shopify cart URL
+| Item | Decision |
+|---|---|
+| Countdown | Removed timer, replaced with "Nur für kurze Zeit verfügbar" |
+| Streichpreis CHF 99.95 | Accepted risk — has been on Shopify for 1.5+ years |
+| Author byline | "MeisterTrim Redaktion" (no fake persona) |
+| ANZEIGE-Label | In sale-bar ✅ |
+| Absolute health claims | Relativized ("minimiert das Risiko von...") ✅ |
+| Neutral packaging claim | Removed — packaging is standard trimmer packaging |
+| 2-Jahres-Garantie als USP | Removed — is legal minimum in CH (OR Art. 210), not a differentiator |
+| Footer links | All pointing to `meistertrim.ch/policies/...` ✅ |
 
-## Legal Blockers (must resolve before go-live)
+**Still open (non-blocking for launch):**
+- **Reviews:** Placeholders remain (TODO comment in HTML) — real customer reviews with consent pending from client. VERIFIZIERT-Badge only when Shopify/Trustpilot purchase proof exists.
+- **Cookie banner:** Needed for revDSG compliance (Meta Pixel, GA4, Triple Whale) — separate task.
 
-All details in `LEGAL-CHECKLIST.md`. Short list:
+## Copy Rules
 
-1. **Countdown:** Currently rolling reset (UWG violation) → needs real end date or removal
-2. **Streichpreis CHF 99.95:** Only legal if product was sold at that price for 30+ consecutive days (PBV Art. 16) → confirm with client
-3. **Reviews + author byline:** Currently placeholder personas → must be real (with consent) or replaced with "MeisterTrim Redaktion"
-4. **"ANZEIGE" label:** Required in sale-bar (Swiss press council Richtlinie 10.1)
-5. **Absolute health claims:** "Keine Pickel" etc. → must be relativized ("minimiert das Risiko von...")
-6. **Cookie banner:** Required for Meta Pixel / GTM under revDSG (since 1.9.2023)
-7. **Footer links:** Currently `href="#"` → must point to `meistertrim.ch/policies/...`
-
-## Copy Rules (see `COPY-GUIDELINES.md` for full library)
+Read `COPY-GUIDELINES.md` before touching any copy. Key constraints:
 
 **Belief chain order is mandatory** — each section builds on the previous:
-1. Schuld-Entlastung ("nicht deine Schuld") → 2. LED-Mechanism → 3. IPX7 → 4. Grip/3-Säulen → 5. Kontrolle > Glätte → 6. Risk Reversal
+Schuld-Entlastung → LED-Mechanism → IPX7 → Grip/3-Säulen → Kontrolle > Glätte → Risk Reversal
 
-**Swiss-specific:**
-- Thousands separator: `'` (apostrophe) — `CHF 1'490` not `CHF 1.490`. Store raw numbers; format at render time with `.replace(/\B(?=(\d{3})+(?!\d))/g, "'")`. Do NOT put Swiss-formatted numbers in single-quoted JS strings — the `'` breaks parsing.
-- Always `ss` not `ß` (Strasse, nicht Straße)
-- TWINT before PayPal; "Franken" not "Euro"; "Post" for shipping
+**Never:** absolute claims ("100%", "garantiert", "keine Pickel"), brand names (Manscaped, Philips), fake urgency, sexual copy, "ß" (always "ss" in CH).
 
-**Never:** absolute claims ("100%", "garantiert"), brand comparisons (Manscaped, Philips), fake urgency, sexual copy.
+**Swiss-specific:** Thousands separator is `'` — write `CHF 1'490` in HTML, never inside single-quoted JS strings (breaks parsing). TWINT before PayPal. "Franken" not "Euro".
 
-## Open Questions (block go-live)
+## Brand Reference
 
-Client must answer before implementation (see `README.md` for full list):
-- Streichpreis history (30-day rule)
-- Real review pool (Trustpilot/Shopify)
-- Pixel IDs (Meta, GTM container, Triple Whale)
-- Shopify Variant IDs (Standard + Premium)
-- Countdown end date
-- Subdomain confirmation (`try.meistertrim.ch`)
+**Product:** Der Zähmer 2.0 — IPX7 waterproof, LED light, Anti-Rutsch-Grip, HautSchutzPro™ blade, 90 min battery. Standard includes guard attachments (3/4.5/6 mm). Premium adds Dual-Foil blade for smoother finish.
+
+**Mechanism (Big Idea):** Schnitte entstehen durch fehlende Kontrolle (schlechte Sicht + rutschiger Griff), nicht durch Ungeschicklichkeit. Lösung: LED + IPX7 + Grip = Kontroll-Stack.
+
+**Target audience:** Men 25–40, CH/DE, pragmatic. "Ich mach das für Hygiene, nicht weil ich eitel bin." Skeptisch gegenüber DTC-Hype. Stage 4–5 sophistication — "No cuts" wird nicht geglaubt, nur Mechanism + Erwartungssteuerung + Risiko-Umkehr wirken.
+
+**Design tokens:** `#1f3a2e` (Tannengrün) · `#c8462c` (Terracotta CTA) · `#f6f1ea` (Sand BG). Fonts: Fraunces (display) + Inter (body).
