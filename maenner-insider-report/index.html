@@ -115,6 +115,7 @@
       body {
         margin: 0;
         padding: 0;
+        scroll-behavior: smooth;
       }
       body {
         font-family: "Inter", system-ui, sans-serif;
@@ -672,6 +673,20 @@
         font-size: 12px;
         font-weight: 700;
         margin-top: 4px;
+      }
+      .pkg-btn {
+        margin-top: 14px;
+        background: var(--accent);
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+        padding: 10px 12px;
+        border-radius: 5px;
+        box-shadow: 0 3px 0 var(--accent-dark);
+        pointer-events: none;
       }
       .risk-row {
         margin-top: 14px;
@@ -1759,6 +1774,7 @@
               <div class="old">CHF 99.95</div>
               <div class="now">CHF 59.95</div>
               <div class="save">Du sparst CHF 40</div>
+              <div class="pkg-btn">Standard kaufen →</div>
             </div>
             <div class="pkg best" id="pkg-premium">
               <div class="name">Premium</div>
@@ -1768,15 +1784,10 @@
               <div class="old">CHF 119.95</div>
               <div class="now">CHF 69.95</div>
               <div class="save">Du sparst CHF 50</div>
+              <div class="pkg-btn">Premium kaufen →</div>
             </div>
           </div>
 
-          <a
-            href="https://meistertrim.ch/cart/50296566088026:1"
-            id="checkout-btn"
-            class="btn btn-arrow"
-            >Jetzt risikofrei testen</a
-          >
 
           <div class="risk-row">
             Ausverkaufsrisiko: <b>Hoch</b> &nbsp;|&nbsp; <b>Gratis</b> Versand
@@ -2023,7 +2034,7 @@
         <!-- ============ FINAL CTA ============ -->
         <div class="cta-block" style="margin: 30px 0 40px">
           <a
-            href="https://meistertrim.ch/cart/50296566088026:1"
+            href="#kaufen"
             id="final-cta"
             class="btn btn-arrow"
             >Jetzt 40% sichern</a
@@ -2045,7 +2056,8 @@
         <a href="https://meistertrim.ch/policies/refund-policy">Rückgabe</a>·
         <a href="https://meistertrim.ch/policies/privacy-policy">Datenschutz</a
         >· <a href="https://meistertrim.ch/policies/terms-of-service">AGB</a>·
-        <a href="https://meistertrim.ch/pages/kontakt">Kontakt</a>
+        <a href="https://meistertrim.ch/pages/kontakt">Kontakt</a>·
+        <a href="https://meistertrim.ch/policies/legal-notice">Impressum</a>
       </div>
       <div>support@meistertrim.ch</div>
       <div class="legal">
@@ -2064,7 +2076,7 @@
           <span style="color: var(--muted)">statt CHF 99.95 · 40% Rabatt</span>
         </div>
         <a
-          href="https://meistertrim.ch/cart/50296566088026:1"
+          href="#kaufen"
           id="sticky-btn"
           class="btn"
           >Jetzt sichern</a
@@ -2119,29 +2131,6 @@
           }
         }
 
-        var checkoutBtn = document.getElementById("checkout-btn");
-        if (checkoutBtn) {
-          checkoutBtn.href = buildShopifyURL(STANDARD_ID);
-          checkoutBtn.addEventListener("click", function () {
-            fireCTAEvent(STANDARD_ID, 59.95);
-          });
-        }
-
-        var finalBtn = document.getElementById("final-cta");
-        if (finalBtn) {
-          finalBtn.href = buildShopifyURL(STANDARD_ID);
-          finalBtn.addEventListener("click", function () {
-            fireCTAEvent(STANDARD_ID, 59.95);
-          });
-        }
-
-        var stickyBtn = document.getElementById("sticky-btn");
-        if (stickyBtn) {
-          stickyBtn.href = buildShopifyURL(STANDARD_ID);
-          stickyBtn.addEventListener("click", function () {
-            fireCTAEvent(STANDARD_ID, 59.95);
-          });
-        }
 
         var pkgStandard = document.getElementById("pkg-standard");
         if (pkgStandard) {
