@@ -2161,6 +2161,13 @@ window.TriplePixelData={TripleName:"f04d56-3c.myshopify.com",ver:"2.17",plat:"SH
         }
       })();
 
+      // Funnel tracking: fire cta_click on any scroll-to-#kaufen link
+      document.querySelectorAll('a[href="#kaufen"]').forEach(function (el) {
+        el.addEventListener("click", function () {
+          if (typeof gtag !== "undefined") gtag("event", "cta_click");
+        });
+      });
+
       // Sticky CTA — erscheint nach 600px Scroll
       (function () {
         var sticky = document.getElementById("sticky");
