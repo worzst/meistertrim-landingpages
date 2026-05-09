@@ -623,6 +623,29 @@ window.TriplePixelData={TripleName:"f04d56-3c.myshopify.com",ver:"2.17",plat:"SH
       .pkg:hover {
         transform: translateY(-2px);
       }
+      .pkg.loading {
+        opacity: 0.75;
+        cursor: default;
+        pointer-events: none;
+        transform: none !important;
+      }
+      .pkg.loading .pkg-btn {
+        background: var(--brand);
+      }
+      @keyframes pkg-spin {
+        to { transform: rotate(360deg); }
+      }
+      .pkg-spinner {
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        border: 2px solid rgba(255,255,255,0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: pkg-spin 0.6s linear infinite;
+        vertical-align: middle;
+        margin-right: 6px;
+      }
       .pkg.best {
         border-color: var(--brand);
         background: linear-gradient(180deg, #fff, #f1f7f3);
@@ -2110,11 +2133,17 @@ window.TriplePixelData={TripleName:"f04d56-3c.myshopify.com",ver:"2.17",plat:"SH
         }
 
 
+        function setLoading(el) {
+          el.classList.add("loading");
+          el.querySelector(".pkg-btn").innerHTML = '<span class="pkg-spinner"></span>Wird geladen…';
+        }
+
         var pkgStandard = document.getElementById("pkg-standard");
         if (pkgStandard) {
           pkgStandard.style.cursor = "pointer";
           pkgStandard.addEventListener("click", function () {
             var url = buildShopifyURL(STANDARD_ID);
+            setLoading(pkgStandard);
             fireCTAEvent(STANDARD_ID, 59.95);
             setTimeout(function () { window.location.href = url; }, 300);
           });
@@ -2125,6 +2154,7 @@ window.TriplePixelData={TripleName:"f04d56-3c.myshopify.com",ver:"2.17",plat:"SH
           pkgPremium.style.cursor = "pointer";
           pkgPremium.addEventListener("click", function () {
             var url = buildShopifyURL(PREMIUM_ID);
+            setLoading(pkgPremium);
             fireCTAEvent(PREMIUM_ID, 69.95);
             setTimeout(function () { window.location.href = url; }, 300);
           });
