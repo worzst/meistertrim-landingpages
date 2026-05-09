@@ -2094,7 +2094,7 @@ window.TriplePixelData={TripleName:"f04d56-3c.myshopify.com",ver:"2.17",plat:"SH
 
         function fireCTAEvent(variantId, price) {
           if (typeof fbq !== "undefined") {
-            fbq("track", "InitiateCheckout", {
+            fbq("trackCustom", "LPPackageSelect", {
               value: price,
               currency: "CHF",
               content_ids: [variantId],
