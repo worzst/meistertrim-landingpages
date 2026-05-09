@@ -43,6 +43,7 @@ Deployment: `git push origin main` → Cloudflare Pages auto-deploys within ~30s
 | Meta Pixel | `532114799530840` |
 | GA4 Measurement ID | `G-ZL6JB3MB4C` |
 | Triple Whale store | `f04d56-3c.myshopify.com` |
+| Microsoft Clarity | `wnvq4p6qb7` |
 | Shopify Standard Variant | `50296566088026` |
 | Shopify Premium Variant | `50296566120794` |
 | Cart URL format | `https://meistertrim.ch/cart/{VARIANT_ID}:1?{utm_params}` |
@@ -65,9 +66,9 @@ function buildShopifyURL(variantId) {
 
 **Triple Whale:** official headless snippet v2.17 in `<head>`. Must register `try.meistertrim.ch` as a custom domain in TW Dashboard (one-time, not yet done). Product ID for `TriplePixel("AddToCart", ...)` calls: `9822808801626`.
 
-**GA4 cross-domain still needs UI config** (one-time, no code required):
-1. GA4 Admin → Data Streams → Web Stream → Configure tag settings → Configure your domains → add `meistertrim.ch` + `try.meistertrim.ch`
-2. Same screen → List unwanted referrals → add `try.meistertrim.ch`
+**Microsoft Clarity:** snippet in `<head>`, project `wnvq4p6qb7`. Used for session recordings and scroll heatmaps to diagnose conversion drop-off.
+
+**Pixel tracking verified:** `InitiateCheckout` fires correctly on `pkg-standard` and `pkg-premium` clicks (confirmed via Meta Pixel Helper). Shopify checkout pages show "no pixel" in Pixel Helper — this is expected, Shopify tracks purchase events server-side via their native Facebook integration. To see LP-specific `InitiateCheckout` events in Meta Events Manager, filter by domain `try.meistertrim.ch`.
 
 ## Shipping Status (important)
 
